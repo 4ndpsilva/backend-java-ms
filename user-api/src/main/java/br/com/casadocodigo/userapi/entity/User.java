@@ -1,6 +1,5 @@
 package br.com.casadocodigo.userapi.entity;
 
-import br.com.casadocodigo.userapi.dto.UserDTO;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -39,15 +38,4 @@ public class User implements Serializable {
 
     @Column(name = "CREATED_AT")
     private LocalDateTime createdAt;
-
-    public static User toEntity(final UserDTO dto){
-        User user = new User();
-        user.setId(dto.getId());
-        user.setName(dto.getName());
-        user.setCpf(dto.getCpf());
-        user.setEmail(dto.getEmail());
-        user.setPhone(dto.getPhone());
-        user.setCreatedAt(dto.getCreatedAt());
-        return user;
-    }
 }

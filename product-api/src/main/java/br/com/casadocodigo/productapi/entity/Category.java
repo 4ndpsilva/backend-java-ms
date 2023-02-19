@@ -1,6 +1,5 @@
 package br.com.casadocodigo.productapi.entity;
 
-import br.com.casadocodigo.productapi.dto.CategoryDTO;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,11 +22,4 @@ public class Category implements Serializable {
 
     @Column(name = "NAME")
     private String name;
-
-    public static Category toEntity(final CategoryDTO dto){
-        final Category entity = new Category();
-        entity.setId(dto.getId());
-        entity.setName(dto.getName());
-        return entity;
-    }
 }

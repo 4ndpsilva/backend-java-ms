@@ -1,23 +1,24 @@
 package br.com.casadocodigo.productapi.service;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
-import org.springframework.stereotype.Service;
-
 import br.com.casadocodigo.productapi.dto.ProductDTO;
 import br.com.casadocodigo.productapi.entity.Product;
+import br.com.casadocodigo.productapi.mapper.ProductMapper;
 import br.com.casadocodigo.productapi.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 @RequiredArgsConstructor
 @Service
 public class ProductService {
 	private final ProductRepository repository;
+	private final ProductMapper mapper;
 	
 	public ProductDTO save(final ProductDTO dto) {
-		return ProductDTO.toDTO(repository.save(Product.toEntity(dto)));
+		return mapper.map(repository.save(mapper.map(dto)));
 	}
 	
 	public void delete(final Long id) {
@@ -30,7 +31,7 @@ public class ProductService {
 	
 	public ProductDTO findById(final Long id) {
 		return repository.findById(id)
-				.map(ProductDTO::toDTO)
+				.map(mapper::map)
 				.orElseThrow(() -> new RuntimeException("Product not found"));
 	}
 	
@@ -40,7 +41,7 @@ public class ProductService {
 	
 	public ProductDTO findByProductIdentifier(final String productIdentifier) {
 		return repository.findByProductIdentifier(productIdentifier)
-				.map(ProductDTO::toDTO)
+				.map(mapper::map)
 				.orElseThrow(() -> new RuntimeException("Product not found"));
 	}
 	
@@ -50,7 +51,7 @@ public class ProductService {
 	
 	private List<ProductDTO> createList(final List<Product> entities){
 		return entities.stream()
-				.map(ProductDTO::toDTO)
+				.map(mapper::map)
 				.collect(Collectors.toList());
 	}
 }

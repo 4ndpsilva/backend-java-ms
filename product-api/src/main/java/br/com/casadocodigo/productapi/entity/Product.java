@@ -1,6 +1,5 @@
 package br.com.casadocodigo.productapi.entity;
 
-import br.com.casadocodigo.productapi.dto.ProductDTO;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -39,18 +38,4 @@ public class Product implements Serializable {
     @ManyToOne
     @JoinColumn(name = "CATEGORY_ID")
     private Category category;
-
-    public static Product toEntity(final ProductDTO dto){
-        final Product entity = new Product();
-        entity.setProductIdentifier(dto.getProductIdentifier());
-        entity.setName(dto.getName());
-        entity.setDescription(dto.getDescription());
-        entity.setPrice(dto.getPrice());
-
-        if(dto.getCategory() != null){
-            entity.setCategory(Category.toEntity(dto.getCategory()));
-        }
-
-        return entity;
-    }
 }

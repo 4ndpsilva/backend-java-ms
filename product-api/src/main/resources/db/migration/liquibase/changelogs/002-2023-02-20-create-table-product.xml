@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+
+    <changeSet id="1" author="andre">
+        <createTable tableName="TB_PRODUCT">
+            <column name="ID" type="bigint">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="PRODUCT_IDENTIFIER" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NAME" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DESCRIPTION" type="varchar(100)"/>
+            <column name="PRICE" type="DECIMAL(5,2)"/>
+            <column name="CREATED_AT" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="UPDATED_AT" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="andre">
+        <addAutoIncrement tableName="TB_PRODUCT" columnName="ID" startWith="1" incrementBy="1" columnDataType="bigint"/>
+        <addUniqueConstraint tableName="TB_PRODUCT" columnNames="PRODUCT_IDENTIFIER"/>
+    </changeSet>
+</databaseChangeLog>

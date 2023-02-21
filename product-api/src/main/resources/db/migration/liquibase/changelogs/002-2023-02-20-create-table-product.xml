@@ -18,6 +18,9 @@
             </column>
             <column name="DESCRIPTION" type="varchar(100)"/>
             <column name="PRICE" type="DECIMAL(5,2)"/>
+            <column name="CATEGORY_ID" type="bigint">
+                <constraints nullable="false"/>
+            </column>
             <column name="CREATED_AT" type="datetime">
                 <constraints nullable="false"/>
             </column>
@@ -29,6 +32,9 @@
 
     <changeSet id="2" author="andre">
         <addAutoIncrement tableName="TB_PRODUCT" columnName="ID" startWith="1" incrementBy="1" columnDataType="bigint"/>
+        <addForeignKeyConstraint baseTableName="TB_PRODUCT" baseColumnNames="CATEGORY_ID"
+                                 constraintName="FK_PRODUCT" referencedTableName="TB_CATEGORY"
+                                 referencedColumnNames="ID"/>
         <addUniqueConstraint tableName="TB_PRODUCT" columnNames="PRODUCT_IDENTIFIER"/>
     </changeSet>
 </databaseChangeLog>

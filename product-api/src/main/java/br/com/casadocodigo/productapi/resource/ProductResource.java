@@ -49,7 +49,7 @@ public class ProductResource {
 	}
 	
 	@GetMapping
-	public ResponseEntity<List<ProductDTO>> findAll(@PathVariable final Long categoryId){
+	public ResponseEntity<List<ProductDTO>> findAll(){
 		return ResponseEntity.ok(service.findAll());
 	}
 }

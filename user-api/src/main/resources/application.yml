@@ -9,10 +9,10 @@ spring:
     hikari:
       connectionTimeout: 20000
       maximumPoolSize: 5
-  jpa:
-    properties:
-      hibernate:
-        default_schema: users
+#  jpa:
+#    properties:
+#      hibernate:
+#        default_schema: users
   h2:
     console:
       enabled: true

@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 8080
 
 spring:
   datasource:
@@ -15,6 +15,7 @@ spring:
       path: /h2
   liquibase:
     enabled: true
+    #defaultSchema: users
     change-log: classpath:db/migration/liquibase/changelog-master.xml
-    database-change-log-table: TB_DATABASE_CHANGE_LOG
-    database-change-log-lock-table: TB_DATABASE_CHANGE_LOG_LOCK
+    database-change-log-table: TB_DATABASE_CHANGELOG
+    database-change-log-lock-table: TB_DATABASE_CHANGELOG_LOCK

@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -45,4 +46,11 @@ public class Shop implements Serializable {
 
     @Column(name = "UPDATED_AT")
     private LocalDateTime updatedAt;
+
+    @PrePersist
+    public void calculateTotal(){
+        total = items.stream()
+                .map(ShopItem::getPrice)
+                .reduce(BigDecimal.ZERO, (subTotal, i) -> subTotal.add(i));
+    }
 }

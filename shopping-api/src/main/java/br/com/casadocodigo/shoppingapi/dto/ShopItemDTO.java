@@ -3,16 +3,16 @@ package br.com.casadocodigo.shoppingapi.dto;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 
 @Getter
 @Setter
 public class ShopItemDTO {
-    private Long id;
-    private String name;
-    private String cpf;
-    private String address;
-    private String email;
-    private String phone;
-    private LocalDateTime createdAt;
+    @NotBlank
+    private String productIdentifier;
+
+    @NotNull
+    private BigDecimal price;
 }

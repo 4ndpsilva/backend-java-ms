@@ -6,7 +6,7 @@
 		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
 
     <changeSet id="1" author="andre">
-        <createTable tableName="TB_SHOP">
+        <createTable tableName="TB_SHOP" schemaName="shop_schema">
             <column name="ID" type="BIGINT">
                 <constraints primaryKey="true"/>
             </column>
@@ -28,7 +28,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="2" author="andre" dbms="h2">
-        <addAutoIncrement tableName="TB_SHOP" columnName="ID" startWith="1" incrementBy="1" columnDataType="bigint"/>
+    <changeSet id="2" author="andre">
+        <addAutoIncrement tableName="TB_SHOP" columnName="ID" startWith="1" incrementBy="1" columnDataType="bigint"  schemaName="shop_schema"/>
     </changeSet>
 </databaseChangeLog>

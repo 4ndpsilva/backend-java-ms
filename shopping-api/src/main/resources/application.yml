@@ -3,20 +3,23 @@ server:
 #CREATE SCHEMA IF NOT EXISTS USERS;
 spring:
   datasource:
-    url: jdbc:h2:mem:dev;INIT=CREATE SCHEMA IF NOT EXISTS LIQUIBASE_SCHEMA
-    username: sa
+    #url: jdbc:h2:mem:dev;INIT=CREATE SCHEMA IF NOT EXISTS LIQUIBASE_SCHEMA
+    #username: sa
+    #password: 123
+    url: jdbc:postgresql://localhost:5432/db_test
+    username: postgres
     password: 123
     hikari:
       connectionTimeout: 20000
       maximumPoolSize: 5
-  h2:
-    console:
-      enabled: true
-      path: /h2
+  #h2:
+    #console:
+     # enabled: true
+      #path: /h2
   liquibase:
     enabled: true
-    #default-schema: users
-    liquibase-schema: liquibase_schema
+    #default-schema: shop_schema
+    #liquibase-schema: liquibase_schema
     change-log: classpath:db/migration/liquibase/changelog-master.xml
     database-change-log-table: TB_DATABASE_CHANGELOG
     database-change-log-lock-table: TB_DATABASE_CHANGELOG_LOCK

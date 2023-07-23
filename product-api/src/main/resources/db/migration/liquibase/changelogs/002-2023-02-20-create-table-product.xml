@@ -17,16 +17,14 @@
                 <constraints nullable="false"/>
             </column>
             <column name="DESCRIPTION" type="varchar(100)"/>
-            <column name="PRICE" type="DECIMAL(5,2)"/>
+            <column name="PRICE" type="DECIMAL"/>
             <column name="CATEGORY_ID" type="bigint">
                 <constraints nullable="false"/>
             </column>
             <column name="CREATED_AT" type="datetime">
                 <constraints nullable="false"/>
             </column>
-            <column name="UPDATED_AT" type="datetime">
-                <constraints nullable="false"/>
-            </column>
+            <column name="UPDATED_AT" type="datetime"/>
         </createTable>
     </changeSet>
 
@@ -36,5 +34,24 @@
                                  constraintName="FK_PRODUCT" referencedTableName="TB_CATEGORY"
                                  referencedColumnNames="ID"/>
         <addUniqueConstraint tableName="TB_PRODUCT" columnNames="PRODUCT_IDENTIFIER"/>
+    </changeSet>
+
+    <changeSet id="3" author="andre">
+        <sql>
+            INSERT INTO TB_PRODUCT(CATEGORY_ID, PRODUCT_IDENTIFIER, NAME, DESCRIPTION, PRICE, CREATED_AT, UPDATED_AT)
+                VALUES(1, 'PRD001', 'TV SAMSUNG 70', 'Televisão smart', 5000.0, current_timestamp, NULL);
+
+            INSERT INTO TB_PRODUCT(CATEGORY_ID, PRODUCT_IDENTIFIER, NAME, DESCRIPTION, PRICE, CREATED_AT, UPDATED_AT)
+                VALUES(2, 'PRD002', 'Sofá Cama', 'Sofa tres lugares', 2500.0, current_timestamp, NULL);
+
+            INSERT INTO TB_PRODUCT(CATEGORY_ID, PRODUCT_IDENTIFIER, NAME, DESCRIPTION, PRICE, CREATED_AT, UPDATED_AT)
+                VALUES(3, 'PRD003', 'Carrinho', 'Carrinho de controle remoto', 500.0, current_timestamp, NULL);
+
+            INSERT INTO TB_PRODUCT(CATEGORY_ID, PRODUCT_IDENTIFIER, NAME, DESCRIPTION, PRICE, CREATED_AT, UPDATED_AT)
+                VALUES(3, 'PRD004', 'Boneca Barbie', 'Barbie coleção de verão', 350.0, current_timestamp, NULL);
+
+            INSERT INTO TB_PRODUCT(CATEGORY_ID, PRODUCT_IDENTIFIER, NAME, DESCRIPTION, PRICE, CREATED_AT, UPDATED_AT)
+                VALUES(1, 'PRD005', 'PlayStation 5', 'Video game PlayStation 5', 4500, current_timestamp, NULL);
+        </sql>
     </changeSet>
 </databaseChangeLog>

@@ -38,12 +38,12 @@ public class ProductResource {
 		return ResponseEntity.ok(service.findById(id));
 	}
 	
-	@GetMapping("/{identifier}")
+	@GetMapping("/identifier/{identifier}")
 	public ResponseEntity<ProductDTO> findByProductIdentifier(@PathVariable final String identifier){
 		return ResponseEntity.ok(service.findByProductIdentifier(identifier));
 	}
 	
-	@GetMapping("/category/{id}")
+	@GetMapping("/category/{categoryId}")
 	public ResponseEntity<List<ProductDTO>> findByCategoryId(@PathVariable final Long categoryId){
 		return ResponseEntity.ok(service.findByCategoryId(categoryId));
 	}

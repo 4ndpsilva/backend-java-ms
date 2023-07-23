@@ -36,7 +36,7 @@ public class ProductService {
 	}
 	
 	public List<ProductDTO> findByCategoryId(final Long categoryId) {
-		return createList(repository.findProductByCategory(categoryId));
+		return createList(repository.findByCategoryId(categoryId));
 	}
 	
 	public ProductDTO findByProductIdentifier(final String productIdentifier) {

@@ -10,11 +10,10 @@ import java.util.Optional;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
-    @Query("select p.name, p.price, p.productIdentifier, p.description"
-    		+" from Product p"
+    @Query("select p from Product p"
             +" join Category c on p.category.id = c.id"
             +" where c.id = :categoryId")
-    List<Product> findProductByCategory(@Param("categoryId") final Long categoryId);
+    List<Product> findByCategoryId(@Param("categoryId") final Long categoryId);
 
     Optional<Product> findByProductIdentifier(final String productIdentifier);
 }

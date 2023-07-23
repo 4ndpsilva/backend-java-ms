@@ -1,9 +1,9 @@
 server:
   port: 8082
-
+#CREATE SCHEMA IF NOT EXISTS USERS;
 spring:
   datasource:
-    url: jdbc:h2:mem:dev
+    url: jdbc:h2:mem:dev;INIT=CREATE SCHEMA IF NOT EXISTS LIQUIBASE_SCHEMA
     username: sa
     password: 123
     hikari:
@@ -15,7 +15,8 @@ spring:
       path: /h2
   liquibase:
     enabled: true
-    #defaultSchema: users
+    #default-schema: users
+    liquibase-schema: liquibase_schema
     change-log: classpath:db/migration/liquibase/changelog-master.xml
     database-change-log-table: TB_DATABASE_CHANGELOG
     database-change-log-lock-table: TB_DATABASE_CHANGELOG_LOCK

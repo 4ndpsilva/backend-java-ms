@@ -31,7 +31,7 @@ public class Shop implements Serializable {
     @Column(name = "USER_IDENTIFIER")
     private String userIdentifier;
 
-    @Column(name = "DATE")
+    @Column(name = "DATE_BUY")
     private LocalDateTime date;
 
     @Column(name = "TOTAL")
